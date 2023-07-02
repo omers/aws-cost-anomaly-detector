@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 resource "aws_sns_topic" "cost_anomaly_updates" {
-  name = "CostAnomalyUpdates"
+  name              = "CostAnomalyUpdates"
   kms_master_key_id = "alias/aws/sns"
   delivery_policy = jsonencode({
     "http" : {
