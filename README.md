@@ -1,3 +1,19 @@
+# Description:
+The AWS Cost Anomaly Detection Terraform module is a powerful tool designed to simplify the management of cost anomaly detection in your Amazon Web Services (AWS) infrastructure. This module leverages the flexibility and scalability of Terraform to automate the deployment and configuration of the necessary AWS resources, allowing you to effortlessly monitor and identify unusual spending patterns in your cloud environment.
+
+By utilizing the AWS Cost Anomaly Detection Terraform module, you can proactively detect and investigate unexpected changes in your AWS costs, enabling you to optimize your cloud spending and ensure cost efficiency. The module integrates seamlessly with AWS Cost Explorer and leverages its machine learning capabilities to analyze historical cost data and identify anomalies, such as sudden cost spikes or unusual usage patterns.
+
+# Key Features:
+
+Simple Deployment: The Terraform module provides an intuitive and declarative approach to infrastructure management, allowing you to easily deploy the necessary resources for cost anomaly detection.
+Automated Configuration: With this module, you can automate the configuration of AWS Cost Explorer and set up the required anomaly detection settings without manual intervention.
+Real-time Alerts: Receive real-time notifications when cost anomalies are detected, enabling you to promptly investigate and take appropriate actions to mitigate any potential issues.
+Cost Optimization: By leveraging the insights provided by the module, you can optimize your AWS spending, identify cost-saving opportunities, and ensure better cost control for your cloud infrastructure.
+Scalability: The module is designed to handle large-scale AWS environments, accommodating growing workloads and enabling you to seamlessly monitor cost anomalies across your entire infrastructure.
+Whether you are a small startup or a large enterprise, the AWS Cost Anomaly Detection Terraform module offers an efficient and reliable solution to automate the detection and management of cost anomalies in your AWS environment. Start using this module today and gain valuable insights into your cloud spending, empowering you to make informed decisions and optimize your AWS costs.
+
+# Module documentation:
+
 ## Requirements
 
 | Name | Version |
