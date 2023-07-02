@@ -5,11 +5,14 @@ By utilizing the AWS Cost Anomaly Detection Terraform module, you can proactivel
 
 # Key Features:
 
-Simple Deployment: The Terraform module provides an intuitive and declarative approach to infrastructure management, allowing you to easily deploy the necessary resources for cost anomaly detection.
+## Simple Deployment:
+The Terraform module provides an intuitive and declarative approach to infrastructure management, allowing you to easily deploy the necessary resources for cost anomaly detection.
 Automated Configuration: With this module, you can automate the configuration of AWS Cost Explorer and set up the required anomaly detection settings without manual intervention.
-Real-time Alerts: Receive real-time notifications when cost anomalies are detected, enabling you to promptly investigate and take appropriate actions to mitigate any potential issues.
+## Real-time Alerts:
+Receive real-time notifications when cost anomalies are detected, enabling you to promptly investigate and take appropriate actions to mitigate any potential issues.
 Cost Optimization: By leveraging the insights provided by the module, you can optimize your AWS spending, identify cost-saving opportunities, and ensure better cost control for your cloud infrastructure.
-Scalability: The module is designed to handle large-scale AWS environments, accommodating growing workloads and enabling you to seamlessly monitor cost anomalies across your entire infrastructure.
+## Scalability:
+The module is designed to handle large-scale AWS environments, accommodating growing workloads and enabling you to seamlessly monitor cost anomalies across your entire infrastructure.
 Whether you are a small startup or a large enterprise, the AWS Cost Anomaly Detection Terraform module offers an efficient and reliable solution to automate the detection and management of cost anomalies in your AWS environment. Start using this module today and gain valuable insights into your cloud spending, empowering you to make informed decisions and optimize your AWS costs.
 
 # Module documentation:
