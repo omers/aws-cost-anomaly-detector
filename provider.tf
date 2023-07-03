@@ -11,9 +11,6 @@ terraform {
 provider "aws" {
   region = var.region
   default_tags {
-    tags = {
-      Environment = var.environment
-      Owner       = "Ops"
-    }
+    tags = var.resource_tags
   }
 }
