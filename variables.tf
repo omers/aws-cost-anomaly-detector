@@ -20,3 +20,9 @@ variable "raise_amount_percent" {
   type        = string
   description = "An Expression object used to specify the anomalies that you want to generate alerts for. The precentage service cost increase than the expected"
 }
+
+variable "resource_tags" {
+  description = "Tags to set for all resources"
+  type        = map(string)
+  default     = {}
+}
