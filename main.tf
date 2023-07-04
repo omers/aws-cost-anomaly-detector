@@ -29,6 +29,13 @@ resource "aws_sns_topic_subscription" "topic_email_subscription" {
   endpoint  = var.emails[count.index]
 }
 
+resource "aws_sns_topic_subscription" "pagerduty" {
+  count                  = var.create_pagerduty ? 1 : 0
+  endpoint               = var.pagerduty_endpoint
+  endpoint_auto_confirms = true
+  protocol               = "https"
+  topic_arn              = aws_sns_topic.cost_anomaly_updates.arn
+}
 
 data "aws_iam_policy_document" "sns_topic_policy" {
   policy_id = "__default_policy_ID"
@@ -104,10 +111,19 @@ resource "aws_ce_anomaly_subscription" "realtime_subscription" {
   name      = "RealtimeAnomalySubscription"
   frequency = "IMMEDIATE"
   threshold_expression {
-    dimension {
-      key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
-      values        = [var.raise_amount_percent]
-      match_options = ["GREATER_THAN_OR_EQUAL"]
+    or {
+      dimension {
+        key           = "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
+        values        = [var.raise_amount_percent]
+        match_options = ["GREATER_THAN_OR_EQUAL"]
+      }
+    }
+    or {
+      dimension {
+        key           = "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
+        values        = [var.raise_amount_absolute]
+        match_options = ["GREATER_THAN_OR_EQUAL"]
+      }
     }
   }
   monitor_arn_list = [
