@@ -1,41 +1,72 @@
-# Description:
-The AWS Cost Anomaly Detection Terraform module is a powerful tool designed to simplify the management of cost anomaly detection in your Amazon Web Services (AWS) infrastructure. This module leverages the flexibility and scalability of Terraform to automate the deployment and configuration of the necessary AWS resources, allowing you to effortlessly monitor and identify unusual spending patterns in your cloud environment.
+# AWS Cost Anomaly Detector 🚨
 
-By utilizing the AWS Cost Anomaly Detection Terraform module, you can proactively detect and investigate unexpected changes in your AWS costs, enabling you to optimize your cloud spending and ensure cost efficiency. The module integrates seamlessly with AWS Cost Explorer and leverages its machine learning capabilities to analyze historical cost data and identify anomalies, such as sudden cost spikes or unusual usage patterns.
+## Description
 
-# Key Features:
+Never be surprised by your AWS bill again! This Terraform module automatically sets up AWS Cost Anomaly Detection to monitor your spending and alert you when unexpected cost increases occur.
 
-## Simple Deployment:
-The Terraform module provides an intuitive and declarative approach to infrastructure management, allowing you to easily deploy the necessary resources for cost anomaly detection.
-Automated Configuration: With this module, you can automate the configuration of AWS Cost Explorer and set up the required anomaly detection settings without manual intervention.
-## Real-time Alerts:
-Receive real-time notifications when cost anomalies are detected, enabling you to promptly investigate and take appropriate actions to mitigate any potential issues.
-Cost Optimization: By leveraging the insights provided by the module, you can optimize your AWS spending, identify cost-saving opportunities, and ensure better cost control for your cloud infrastructure.
-## Scalability:
-The module is designed to handle large-scale AWS environments, accommodating growing workloads and enabling you to seamlessly monitor cost anomalies across your entire infrastructure.
-Whether you are a small startup or a large enterprise, the AWS Cost Anomaly Detection Terraform module offers an efficient and reliable solution to automate the detection and management of cost anomalies in your AWS environment. Start using this module today and gain valuable insights into your cloud spending, empowering you to make informed decisions and optimize your AWS costs.
 
-# PagerDuty setup
-PagerDuty service shall be an Amazon Cloudwatch service. Once created you should copy the PagerDuty Integration URL to the endpoint_url input variable
-# Module documentation:
+## Key Features
 
-## Requirements
+- **Simple Deployment**: Intuitive and declarative Terraform module for cost anomaly detection.
+- **Automated Configuration**: Automatically configures AWS Cost Explorer and anomaly detection settings.
+- **Real-time Alerts**: Receive instant notifications for cost anomalies.
+- **Cost Optimization**: Gain insights to optimize AWS spending and identify cost-saving opportunities.
+- **Scalability**: Supports large-scale AWS environments with ease.
+
+## Quick Start
+
+```hcl
+module "cost_anomaly_detection" {
+  source  = "https://github.com/omers/aws-cost-anomaly-detector.git"
+  
+  region                = "us-west-2"
+  environment           = "production"
+  emails                = ["devops@example.com", "finance@example.com"]
+  raise_amount_percent  = "20"
+  raise_amount_absolute = "100"
+  
+  # Optional PagerDuty integration
+  create_pagerduty      = true
+  pagerduty_endpoint    = "https://events.pagerduty.com/integration/abcdef123456/enqueue"
+  
+  resource_tags = {
+    ManagedBy = "Terraform"
+    Project   = "CostOptimization"
+  }
+}
+```
+
+## Prerequisites
+
+- Terraform v1.0+
+- AWS account with appropriate permissions
+- AWS provider v5.6.2 or later
+
+## PagerDuty Setup
+
+1. Create a new PagerDuty service with the **Amazon CloudWatch** integration type.
+2. Copy the PagerDuty Integration URL to the `pagerduty_endpoint` input variable.
+3. Set `create_pagerduty = true` in your module configuration.
+
+## Module Documentation
+
+### Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.6.2 |
 
-## Providers
+### Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 5.6.2 |
 
-## Modules
+### Modules
 
 No modules.
 
-## Resources
+### Resources
 
 | Name | Type |
 |------|------|
@@ -48,7 +79,7 @@ No modules.
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.sns_topic_policy](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/data-sources/iam_policy_document) | data source |
 
-## Inputs
+### Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -61,7 +92,7 @@ No modules.
 | <a name="input_region"></a> [region](#input\_region) | AWS Region | `string` | n/a | yes |
 | <a name="input_resource_tags"></a> [resource\_tags](#input\_resource\_tags) | Tags to set for all resources | `map(string)` | `{}` | no |
 
-## Outputs
+### Outputs
 
 | Name | Description |
 |------|-------------|
