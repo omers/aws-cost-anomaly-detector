@@ -56,17 +56,17 @@ module "cost_anomaly_detection" {
 
 ## Module Documentation
 
-### Requirements
+## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.6.2 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
 
 ### Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.6.2 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 5.0 |
 
 ### Modules
 
@@ -76,14 +76,14 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_ce_anomaly_monitor.anomaly_monitor](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/resources/ce_anomaly_monitor) | resource |
-| [aws_ce_anomaly_subscription.realtime_subscription](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/resources/ce_anomaly_subscription) | resource |
-| [aws_sns_topic.cost_anomaly_updates](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/resources/sns_topic) | resource |
-| [aws_sns_topic_policy.default](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/resources/sns_topic_policy) | resource |
-| [aws_sns_topic_subscription.pagerduty](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/resources/sns_topic_subscription) | resource |
-| [aws_sns_topic_subscription.topic_email_subscription](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/resources/sns_topic_subscription) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/data-sources/caller_identity) | data source |
-| [aws_iam_policy_document.sns_topic_policy](https://registry.terraform.io/providers/hashicorp/aws/5.6.2/docs/data-sources/iam_policy_document) | data source |
+| [aws_ce_anomaly_monitor.anomaly_monitor](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ce_anomaly_monitor) | resource |
+| [aws_ce_anomaly_subscription.realtime_subscription](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ce_anomaly_subscription) | resource |
+| [aws_sns_topic.cost_anomaly_updates](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
+| [aws_sns_topic_policy.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_policy) | resource |
+| [aws_sns_topic_subscription.pagerduty](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription) | resource |
+| [aws_sns_topic_subscription.topic_email_subscription](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.sns_topic_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ### Inputs
 
