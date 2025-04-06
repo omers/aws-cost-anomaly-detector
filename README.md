@@ -2,8 +2,7 @@
 
 ## Description
 
-Never be surprised by your AWS bill again! This Terraform module automatically sets up AWS Cost Anomaly Detection to monitor your spending and alert you when unexpected cost increases occur.
-
+This Terraform module streamlines AWS cost management by automatically setting up AWS Cost Anomaly Detection. It continuously monitors your cloud expenses and instantly alerts you to unexpected cost spikes—helping you optimize your AWS billing, prevent overspending, and maintain tight control over your cloud budget. Whether you're looking to enhance cost monitoring, streamline AWS cost management, or integrate automated cost alerts into your infrastructure, this module is your key to a more predictable and efficient AWS spending strategy.
 
 ## Key Features
 
@@ -16,8 +15,15 @@ Never be surprised by your AWS bill again! This Terraform module automatically s
 ## Quick Start
 
 ```hcl
+
+terraform {
+# Setup yor state backend here. 
+# Either s3 / local
+}
+
+
 module "cost_anomaly_detection" {
-  source  = "https://github.com/omers/aws-cost-anomaly-detector.git"
+  source  = "github.com/omers/aws-cost-anomaly-detector.git"
   
   region                = "us-west-2"
   environment           = "production"
