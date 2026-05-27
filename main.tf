@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 resource "aws_sns_topic" "cost_anomaly_updates" {
-  name              = "CostAnomalyUpdates"
+  name              = var.sns_topic_name
   kms_master_key_id = "alias/aws/sns"
   delivery_policy = jsonencode({
     "http" : {
@@ -30,7 +30,7 @@ resource "aws_sns_topic_subscription" "topic_email_subscription" {
 }
 
 resource "aws_sns_topic_subscription" "pagerduty" {
-  count                  = var.create_pagerduty ? 1 : 0
+  count                  = var.create_pagerduty && var.pagerduty_endpoint != null ? 1 : 0
   endpoint               = var.pagerduty_endpoint
   endpoint_auto_confirms = true
   protocol               = "https"
@@ -61,6 +61,8 @@ data "aws_iam_policy_document" "sns_topic_policy" {
 
   statement {
     sid = "__default_statement_ID"
+    # AWS-managed default policy allowing account owner to manage the topic
+    # Restricted to this account only via SourceOwner condition
 
     actions = [
       "SNS:Subscribe",
@@ -102,13 +104,13 @@ resource "aws_sns_topic_policy" "default" {
 }
 
 resource "aws_ce_anomaly_monitor" "anomaly_monitor" {
-  name              = "AWSServiceMonitor"
+  name              = var.anomaly_monitor_name
   monitor_type      = "DIMENSIONAL"
   monitor_dimension = "SERVICE"
 }
 
 resource "aws_ce_anomaly_subscription" "realtime_subscription" {
-  name      = "RealtimeAnomalySubscription"
+  name      = var.anomaly_subscription_name
   frequency = "IMMEDIATE"
   threshold_expression {
     or {
