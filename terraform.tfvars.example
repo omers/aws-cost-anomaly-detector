@@ -1,0 +1,92 @@
+# AWS Cost Anomaly Detector - Terraform Variables Example
+#
+# This file demonstrates how to configure the AWS Cost Anomaly Detector module.
+# Copy this file to terraform.tfvars and update the values for your environment.
+#
+# USAGE:
+#   1. Copy this file to terraform.tfvars
+#   2. Update the variable values below for your environment
+#   3. Run: terraform plan
+#   4. Review the changes and run: terraform apply
+#
+# IMPORTANT NOTES:
+#   - Email subscribers must manually confirm their subscription via the confirmation link
+#     sent by AWS SNS. Unconfirmed subscriptions will not receive notifications.
+#   - The SNS topic uses AWS-managed KMS encryption for security.
+#   - Cost anomalies trigger alerts when EITHER the percentage OR absolute dollar threshold
+#     is exceeded (OR logic).
+#   - PagerDuty integration requires endpoint_auto_confirms = true on the PagerDuty side.
+#
+# ============================================================================
+
+# REQUIRED VARIABLES
+# ============================================================================
+
+# Deployment environment label (e.g., production, staging, development)
+# Used for resource naming and tagging
+environment = "production"
+
+# AWS region for resource deployment
+# Must be a valid AWS region name (e.g., us-east-1, eu-west-1)
+region = "us-east-1"
+
+# List of email addresses to receive cost anomaly notifications
+# Recipients must confirm their subscription via the SNS confirmation email
+emails = [
+  "ops-team@example.com",
+  "finance@example.com"
+]
+
+# Percentage cost increase threshold (as a string)
+# Alerts trigger when costs increase by this percentage or more
+# Example: "20" triggers alerts for 20% or greater cost increases
+raise_amount_percent = "20"
+
+# Absolute dollar amount threshold in USD (as a string)
+# Alerts trigger when costs increase by this amount or more
+# Example: "100" triggers alerts for $100 or greater cost increases
+raise_amount_absolute = "100"
+
+
+# OPTIONAL VARIABLES
+# ============================================================================
+
+# Tags to apply to all resources (SNS topic, monitor, subscription)
+# Useful for cost allocation, compliance tracking, and resource organization
+resource_tags = {
+  "Terraform"   = "true"
+  "Project"     = "cost-optimization"
+  "Owner"       = "platform-team"
+  "CostCenter"  = "engineering"
+  "Environment" = "production"
+}
+
+# Custom name for the SNS topic
+# Default: "CostAnomalyUpdates"
+# Uncomment to use a custom name
+# sns_topic_name = "CostAnomalyUpdates"
+
+# Custom name for the AWS Cost Anomaly Monitor
+# Default: "AWSServiceMonitor"
+# Uncomment to use a custom name
+# anomaly_monitor_name = "AWSServiceMonitor"
+
+# Custom name for the AWS Cost Anomaly Subscription
+# Default: "RealtimeAnomalySubscription"
+# Uncomment to use a custom name
+# anomaly_subscription_name = "RealtimeAnomalySubscription"
+
+# Enable PagerDuty integration for cost anomaly alerts
+# Set to true to send notifications to PagerDuty in addition to email
+create_pagerduty = false
+
+# PagerDuty HTTPS endpoint (required if create_pagerduty is true)
+# This is the webhook URL from your PagerDuty integration
+# Obtain this from PagerDuty:
+#   1. Go to Services → Select your service
+#   2. Integrations → Add Integration
+#   3. Select "Amazon SNS" or create a custom integration
+#   4. Copy the HTTPS endpoint URL
+# Example: "https://events.pagerduty.com/v2/enqueue"
+# Uncomment and update if using PagerDuty
+# pagerduty_endpoint = "https://events.pagerduty.com/v2/enqueue"
