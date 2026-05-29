@@ -1,4 +1,4 @@
-# AWS Cost Anomaly Detector 🚨
+# AWS Cost Anomaly Detector
 
 ## Description
 
@@ -89,14 +89,17 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_anomaly_monitor_name"></a> [anomaly\_monitor\_name](#input\_anomaly\_monitor\_name) | Name of the AWS Cost Anomaly Monitor | `string` | `"AWSServiceMonitor"` | no |
+| <a name="input_anomaly_subscription_name"></a> [anomaly\_subscription\_name](#input\_anomaly\_subscription\_name) | Name of the AWS Cost Anomaly Subscription | `string` | `"RealtimeAnomalySubscription"` | no |
 | <a name="input_create_pagerduty"></a> [create\_pagerduty](#input\_create\_pagerduty) | Set to true in order to send notifications to PagerDuty | `bool` | `false` | no |
-| <a name="input_emails"></a> [emails](#input\_emails) | List of email addresses to notify | `list(any)` | n/a | yes |
+| <a name="input_emails"></a> [emails](#input\_emails) | List of email addresses to notify | `list(string)` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The account environment (Prod / Dev etc.) | `string` | n/a | yes |
-| <a name="input_pagerduty_endpoint"></a> [pagerduty\_endpoint](#input\_pagerduty\_endpoint) | The PagerDuty HTTPS endpoint where SNS notifications will be sent to | `string` | n/a | yes |
-| <a name="input_raise_amount_absolute"></a> [raise\_amount\_absolute](#input\_raise\_amount\_absolute) | The Absolut increase in USD to trigger the detector. (ANOMALY\_TOTAL\_IMPACT\_ABSOLUTE) | `string` | n/a | yes |
-| <a name="input_raise_amount_percent"></a> [raise\_amount\_percent](#input\_raise\_amount\_percent) | An Expression object used to specify the anomalies that you want to generate alerts for. The precentage service cost increase than the expected | `string` | n/a | yes |
+| <a name="input_pagerduty_endpoint"></a> [pagerduty\_endpoint](#input\_pagerduty\_endpoint) | The PagerDuty HTTPS endpoint where SNS notifications will be sent to. Required only if create_pagerduty is true. | `string` | `null` | no |
+| <a name="input_raise_amount_absolute"></a> [raise\_amount\_absolute](#input\_raise\_amount\_absolute) | Dollar amount threshold in USD (e.g., '100' for $100) | `string` | n/a | yes |
+| <a name="input_raise_amount_percent"></a> [raise\_amount\_percent](#input\_raise\_amount\_percent) | Percentage cost increase threshold (e.g., '20' for 20%) | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | AWS Region | `string` | n/a | yes |
 | <a name="input_resource_tags"></a> [resource\_tags](#input\_resource\_tags) | Tags to set for all resources | `map(string)` | `{}` | no |
+| <a name="input_sns_topic_name"></a> [sns\_topic\_name](#input\_sns\_topic\_name) | Name of the SNS topic for cost anomaly notifications | `string` | `"CostAnomalyUpdates"` | no |
 
 ### Outputs
 
