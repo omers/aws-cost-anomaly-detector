@@ -20,6 +20,8 @@ resource "aws_sns_topic" "cost_anomaly_updates" {
       }
     }
   })
+
+  tags = var.resource_tags
 }
 
 resource "aws_sns_topic_subscription" "topic_email_subscription" {
@@ -107,6 +109,8 @@ resource "aws_ce_anomaly_monitor" "anomaly_monitor" {
   name              = var.anomaly_monitor_name
   monitor_type      = "DIMENSIONAL"
   monitor_dimension = "SERVICE"
+
+  tags = var.resource_tags
 }
 
 resource "aws_ce_anomaly_subscription" "realtime_subscription" {
@@ -139,4 +143,5 @@ resource "aws_ce_anomaly_subscription" "realtime_subscription" {
   depends_on = [
     aws_sns_topic_policy.default,
   ]
+  tags = var.resource_tags
 }
