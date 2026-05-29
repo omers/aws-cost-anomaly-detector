@@ -48,6 +48,36 @@ module "cost_anomaly_detection" {
 - AWS account with appropriate permissions
 - AWS provider v5.6.2 or later
 
+## Configuration Setup
+
+1. Copy the example variables file to create your own configuration:
+   ```bash
+   cp terraform.tfvars.example terraform.tfvars
+   ```
+
+2. Edit `terraform.tfvars` with your specific values:
+   - Update `region` to your target AWS region
+   - Set `emails` to the recipients for notifications
+   - Adjust `raise_amount_percent` and `raise_amount_absolute` thresholds as needed
+   - Optionally configure PagerDuty integration
+
+3. Validate your configuration:
+   ```bash
+   terraform validate
+   ```
+
+4. Preview the resources that will be created:
+   ```bash
+   terraform plan
+   ```
+
+5. Apply the configuration:
+   ```bash
+   terraform apply
+   ```
+
+**Note:** The `terraform.tfvars` file is excluded from version control to prevent committing sensitive information like email addresses and webhook URLs.
+
 ## PagerDuty Setup
 
 1. Create a new PagerDuty service with the **Amazon CloudWatch** integration type.
